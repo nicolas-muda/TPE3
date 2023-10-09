@@ -34,7 +34,8 @@ public class CarreraControler {
 		return CarreraRepository.obtenerCarrerasInscriptos();
 	}
 
-	// punto 3 generar reporte
+	//punto h generar un reporte de las carreras, que para cada carrera incluya información de los inscriptos y egresados por año
+	//Se deben ordenar las carreras alfabéticamente, y presentar los años de manera cronológica.
 	@GetMapping("/reporte")
 	public List<ReporteCarrerasDto> obtenerReporteCarreras() {
 		return CarreraRepository.obtenerReporteCarreras();

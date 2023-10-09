@@ -14,10 +14,10 @@ public class EstudianteControler {
 
 	@Autowired
 	private EstudianteRepository EstudianteRepository;
-	
-	//punto a crear estudiante
+
+	// punto a dar de alta un estudiante
 	@PostMapping
-	public void crearEstudiante(@RequestBody Estudiante e) {
+	public void grabarEstudiante(@RequestBody Estudiante e) {
 		EstudianteRepository.save(e);
 	}
 

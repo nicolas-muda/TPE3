@@ -20,9 +20,10 @@ public class Carrera_EstudianteControler {
 	@Autowired
 	private CarreraEstudianteRepository CarreraEstudianteRepository;
 
+	//punto b matricular estudiante
 	@PostMapping
 	public void InscribirEstudiante(@RequestBody Carrera c, Estudiante e) {
-		Carrera_Estudiante ce = new Carrera_Estudiante(e, c, LocalDate.now(), LocalDate.now());
+		Carrera_Estudiante ce = new Carrera_Estudiante(e, c, LocalDate.now(), null);
 		CarreraEstudianteRepository.save(ce);
 	}
 }
