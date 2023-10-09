@@ -10,7 +10,7 @@ import TP3.entidades.Estudiante;
 
 @Repository
 public interface EstudianteRepository extends JpaRepository<Estudiante, Integer> {
-	@Query("SELECT e FROM Estudiante e WHERE e.numeroLibreta = numeroLibreta")
+	@Query("SELECT e FROM Estudiante e WHERE e.numeroLibreta = :numeroLibreta")
 	Estudiante obtenerPorLibreta(int numeroLibreta);
 
 	@Query("SELECT e FROM Estudiante e ORDER BY e.apellido ASC")

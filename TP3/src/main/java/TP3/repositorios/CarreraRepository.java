@@ -14,5 +14,7 @@ import TP3.entidades.Carrera;
 public interface CarreraRepository extends JpaRepository<Carrera, Integer> {
 	@Query("SELECT c.nombre, COUNT(ce) FROM Carrera c JOIN c.estudiantes ce GROUP BY c.nombre ORDER BY COUNT(ce) DESC")
 	List<CarreraInscriptosDto> obtenerCarrerasInscriptos();
-	//List<ReporteCarrerasDto> obtenerReporteCarreras();
+	
+	@Query("SELECT c.nombre AS Carrera, FUNCTION('YEAR', ce.ingreso) AS Anio, COUNT(ce.id) AS Inscriptos, COUNT(CASE WHEN ce.egreso IS NOT NULL THEN 1 ELSE NULL END) AS Egresados FROM Carrera c LEFT JOIN c.estudiantes ce GROUP BY c.nombre, Anio ORDER BY c.nombre ASC, Anio ASC")
+	List<ReporteCarrerasDto> obtenerReporteCarreras();
 }

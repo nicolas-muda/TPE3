@@ -14,6 +14,12 @@ public class EstudianteControler {
 
 	@Autowired
 	private EstudianteRepository EstudianteRepository;
+	
+	//punto a crear estudiante
+	@PostMapping
+	public void crearEstudiante(@RequestBody Estudiante e) {
+		EstudianteRepository.save(e);
+	}
 
 	// punto c obtener todos los estudiantes con algun criterio de ordenamiento
 	@GetMapping
@@ -22,18 +28,18 @@ public class EstudianteControler {
 	}
 
 	// punto d Obtener todos los estudiantes por numeroLibreta
-	@GetMapping("/{libreta}")
+	@GetMapping("/libreta/{libreta}")
 	public Estudiante obtenerEstudiantesLibreta(@PathVariable int libreta) {
 		return EstudianteRepository.obtenerPorLibreta(libreta);
 	}
 
 	// punto e Obtener todos los estudiantes por genero
-	@GetMapping("/{genero}")
+	@GetMapping("/genero/{genero}")
 	public List<Estudiante> obtenerEstudiantesGenero(@PathVariable String genero) {
 		return EstudianteRepository.obtenerPorGenero(genero);
 	}
 
-	// punto g Obtener todos los estudiantes por genero
+	// punto g Obtener todos los estudiantes por carrera y ciudad
 	@GetMapping("/{carrera}/{ciudad}")
 	public List<Estudiante> obtenerEstudiantesPorCarreraYciudad(@PathVariable String carrera,
 			@PathVariable String ciudad) {
